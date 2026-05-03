@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; margin: 0; }
+  html { color-scheme: dark; }
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    @apply bg-[#08080F] text-white antialiased;
+    font-feature-settings: "cv02","cv03","cv04","cv11";
+  }
+  ::-webkit-scrollbar { width: 4px; height: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { @apply bg-white/10 rounded-full; }
+  ::-webkit-scrollbar-thumb:hover { @apply bg-white/20; }
+  input[type="date"]::-webkit-calendar-picker-indicator,
+  input[type="time"]::-webkit-calendar-picker-indicator { filter: invert(0.4); cursor: pointer; }
+  select option { background: #1a1a28; }
+}
+
+@layer components {
+  .card { @apply bg-[#111118] border border-white/[0.07] rounded-2xl; }
+
+  .input-base {
+    @apply w-full px-3 py-2.5 bg-white/[0.05] border border-white/[0.08] rounded-xl
+      text-sm text-white placeholder-white/25
+      focus:outline-none focus:border-brand-500/60 focus:bg-white/[0.07]
+      transition-colors duration-150;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-4 py-2.5
+      bg-brand-600 hover:bg-brand-700 active:scale-[0.98]
+      text-white text-sm font-semibold rounded-xl
+      transition-all duration-150 cursor-pointer border-none select-none;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-4 py-2.5
+      bg-white/[0.05] hover:bg-white/[0.09] active:scale-[0.98]
+      text-white/60 hover:text-white/85 text-sm font-medium rounded-xl
+      transition-all duration-150 cursor-pointer border border-white/[0.08] select-none;
+  }
+
+  .nav-item {
+    @apply flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-[13px] font-medium
+      text-white/40 hover:text-white/75 hover:bg-white/[0.055]
+      transition-all duration-150 cursor-pointer select-none;
+  }
+  .nav-item.active { @apply bg-brand-500/[0.16] text-brand-300; }
+
+  .stat-card { @apply card p-4 flex flex-col gap-2; }
+  .stat-label { @apply text-[10px] font-semibold uppercase tracking-widest text-white/30; }
+  .stat-value { @apply text-[26px] font-bold tracking-tight text-white leading-none; }
+
+  .badge {
+    @apply inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full;
+  }
+
+  .page-header { @apply mb-6; }
+  .page-title  { @apply text-[21px] font-bold tracking-tight text-white; }
+  .page-subtitle { @apply text-[13px] text-white/38 mt-1; }
+}
+
+@layer utilities {
+  .text-white\/28 { color: rgba(255,255,255,0.28); }
+  .text-white\/32 { color: rgba(255,255,255,0.32); }
+  .text-white\/38 { color: rgba(255,255,255,0.38); }
+  .text-white\/88 { color: rgba(255,255,255,0.88); }
+  .bg-white\/\[0\.055\] { background-color: rgba(255,255,255,0.055); }
+
+  .animate-fade-up {
+    animation: fadeUp 0.3s ease-out both;
+  }
+  .animate-fade-in {
+    animation: fadeIn 0.2s ease-out both;
+  }
+  .animate-pop {
+    animation: pop 0.22s cubic-bezier(0.16,1,0.3,1) both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @keyframes pop {
+    from { opacity: 0; transform: scale(0.96) translateY(4px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+  }
+}
